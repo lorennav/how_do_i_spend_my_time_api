@@ -40,13 +40,13 @@ RSpec.configure do |config|
               id: { type: 'integer' },
               name: { type: 'string' },
               description: { type: 'string', nullable: true },
-              date: { type: 'string',  format: 'date' },
-              start_time: { type: 'string',  format: 'full-time' },
-              finish_time: { type: 'string',  format: 'full-time' },
+              date: { type: 'string', format: 'date' },
+              start_time: { type: 'string', format: 'full-time' },
+              finish_time: { type: 'string', format: 'full-time' },
               category: { type: 'object' }
             },
             required: %w[id name date start_time finish_time]
-        }
+          }
         }
       }
     }

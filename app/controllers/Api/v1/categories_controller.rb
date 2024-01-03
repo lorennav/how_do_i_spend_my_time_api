@@ -1,5 +1,7 @@
-class Api::V1::CategoriesController < ApplicationController
+# frozen_string_literal: true
 
+class Api::V1::CategoriesController < ApplicationController
+  before_action :authenticate_user!
   def index
     categories = Category.all
     render jsonapi: categories

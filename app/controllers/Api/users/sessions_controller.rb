@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
-class Users::SessionsController < Devise::SessionsController
-  deserializable_resource :user
-
+class Api::Users::SessionsController < Devise::SessionsController
   include RackSessionsFix
   respond_to :json
 
   private
+
   def respond_with(current_user, _opts = {})
     json_api_renderer = JSONAPI::Serializable::Renderer.new
     serialized_data = json_api_renderer.render(current_user, class: { User: SerializableUser })
@@ -17,6 +16,7 @@ class Users::SessionsController < Devise::SessionsController
       }
     }, status: :ok
   end
+
   def respond_to_on_destroy
     authorization_header = request.headers['Authorization']
     jwt_secret = Rails.application.credentials.devise_jwt_secret_key!

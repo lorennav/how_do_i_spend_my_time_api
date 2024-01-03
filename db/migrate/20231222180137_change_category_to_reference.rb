@@ -4,4 +4,3 @@ class ChangeCategoryToReference < ActiveRecord::Migration[7.1]
     add_reference :activities, :category, null: true, foreign_key: true
   end
 end
-
