@@ -4,15 +4,15 @@ class Api::V1::CategoriesController < ApplicationController
   before_action :authenticate_user!
   def index
     categories = Category.all
-    render jsonapi: categories
+    render json: categories
   end
 
   def create
     category = Category.new(activity_params)
     if category.save
-      render jsonapi: category, status: :created
+      render json: category, status: :created
     else
-      render jsonapi_errors: category.errors, status: :unprocessable_entity
+      render json: category.errors, status: :unprocessable_entity
     end
   end
 

@@ -7,12 +7,11 @@ class Api::Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def respond_with(current_user, _opts = {})
-    json_api_renderer = JSONAPI::Serializable::Renderer.new
-    serialized_data = json_api_renderer.render(current_user, class: { User: SerializableUser })
+    binding.pry
     if resource.persisted?
       render json: {
         status: { code: 200, message: 'Signed up successfully.' },
-        data: serialized_data[:data][:attributes]
+        data: UserSerializer.new(current_user).serializable_hash
       }
     else
       render json: {

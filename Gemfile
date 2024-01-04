@@ -35,8 +35,8 @@ gem 'bootsnap', require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 gem 'rack-cors'
 
-# Efficient and convenient JSON API library for ruby.
-gem 'jsonapi-rails'
+# ActiveModel::Serializer implementation and Rails hooks
+gem 'active_model_serializers', '~> 0.10.0'
 
 # Seamlessly adds a Swagger (OpenApi) to Rails-based API's
 gem 'rswag'
