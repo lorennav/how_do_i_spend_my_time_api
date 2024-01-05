@@ -10,7 +10,7 @@ RSpec.describe 'Health Check', type: :request do
 
       # Response is a special object that contains HTTP response received after the request is processed
       # response.body is the body of the HTTP response, in this case it will contain the JSON string
-      expect(response.body).to eq('{"status":"Api is online"}')
+      expect(response.body).to eq('{"status":"api is online"}')
 
       # We can also check the HTTP status code of the response
       expect(response.status).to eq(200)

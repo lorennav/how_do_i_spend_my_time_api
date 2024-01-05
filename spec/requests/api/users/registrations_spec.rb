@@ -2,9 +2,8 @@
 
 require 'rails_helper'
 
-describe Api::Users::RegistrationsController, type: :request do
+describe 'api/users/registrations', type: :request do
   let(:user) { build(:user) }
-  let(:created_user) { create(:user) }
   let(:signup_url) { '/api/signup' }
 
   describe 'POST /signup' do
@@ -34,7 +33,7 @@ describe Api::Users::RegistrationsController, type: :request do
       end
 
       it 'returns failure message' do
-        expect(message).to match(/Email can't be blank, Password can't be blank/)
+        expect(message).to match(/Email can't be blank, Password can't be blank, and Name can't be blank/)
       end
     end
   end

@@ -13,7 +13,7 @@ Development
   * [rspec-rails](https://github.com/rspec/rspec-rails)
   * [devise](https://github.com/heartcombo/devise)
   * [devise-jwt](https://github.com/waiting-for-dev/devise-jwt)
-  * [jsonapi-rails](https://jsonapi-rb.org/guides/getting_started/rails.html)
+  * [active-model-serializers](https://github.com/rails-api/active_model_serializers)
 
 * To start using the api, run the following commands:
 
