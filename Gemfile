@@ -51,7 +51,7 @@ gem 'devise'
 gem 'devise-jwt'
 
 # A Ruby static code analyzer and formatter, based on the community Ruby style guide.
-gem 'rubocop', require: false
+gem 'rubocop', require: true
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -59,6 +59,12 @@ group :development, :test do
 
   #  The RSpec testing framework to Ruby on Rails as a drop-in alternative to its default testing framework, Minitest.
   gem 'rspec-rails'
+
+  # A library for setting up Ruby objects as test data.
+  gem 'factory_bot_rails'
+
+  # A library for generating fake data such as names, addresses, and phone numbers.
+  gem 'faker'
 end
 
 group :development do
