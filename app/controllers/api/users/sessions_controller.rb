@@ -16,31 +16,26 @@ class Api::Users::SessionsController < Devise::SessionsController
   end
 
   def respond_to_on_destroy
-    return destroy_success if find_user_by_token.present?
+    msg = 'Logged out successfully.'
+    return handle_json_response(200, msg, :ok) if find_user_by_token.present?
 
-    no_session_error
+    handle_json_response(401, "Can't find an active session", :unauthorized)
   end
 
   def find_user_by_token
     authorization_header = request.headers['Authorization']
     jwt_secret = Rails.application.credentials.devise_jwt_secret_key!
-    return no_session_error unless authorization_header.present?
+    return nil unless authorization_header.present?
 
     jwt_payload = JWT.decode(authorization_header.split(' ').last, jwt_secret).first
     User.find(jwt_payload['sub'])
   end
 
-  def destroy_success
+  def handle_json_response(status_no, message_text, status_sym)
     render json: {
-      status: 200,
-      message: 'Logged out successfully.'
-    }, status: :ok
-  end
-
-  def no_session_error
-    render json: {
-      status: 401,
-      message: "Couldn't find an active session."
-    }, status: :unauthorized
+      status: {
+        code: status_no, message: message_text
+      }
+    }, status: status_sym
   end
 end

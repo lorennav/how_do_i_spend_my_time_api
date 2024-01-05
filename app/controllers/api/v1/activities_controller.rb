@@ -9,11 +9,9 @@ class Api::V1::ActivitiesController < ApplicationController
 
   def create
     activity = current_user.activities.build(activity_params)
-    if activity.save
-      render json: activity, status: :created
-    else
-      render json: activity.errors, status: :unprocessable_entity
-    end
+    return api_response(activity, :created) if activity.save
+
+    api_response(activity.errors, :unprocessable_entity)
   end
 
   private

@@ -9,11 +9,9 @@ class Api::V1::CategoriesController < ApplicationController
 
   def create
     category = Category.new(activity_params)
-    if category.save
-      render json: category, status: :created
-    else
-      render json: category.errors, status: :unprocessable_entity
-    end
+    return api_response(category, :created) if category.save
+
+    api_response(category.errors, :unprocessable_entity)
   end
 
   private
