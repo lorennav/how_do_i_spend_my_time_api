@@ -1,5 +1,8 @@
 # How do I spend my time? (hdismt)
 
+## Project Status:
+ **In development** - This project is actively being developed and is in an ongoing state.
+
 Ruby on Rails api to track activities and time spent on them.
 
 
