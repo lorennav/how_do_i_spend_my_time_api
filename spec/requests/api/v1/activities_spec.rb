@@ -1,19 +1,26 @@
 require 'swagger_helper'
 
-RSpec.describe 'api/activities', type: :request do
+RSpec.describe 'api/v1/activities', type: :request do
+  let(:user) { create(:user) }
+  let(:headers) { { 'Accept' => 'application/json', 'Content-Type' => 'application/json' } }
+  let(:auth_headers) { Devise::JWT::TestHelpers.auth_headers(headers, user) }
+  let(:Authorization) { auth_headers['Authorization'] }
+
   path '/api/v1/activities' do
     get 'Retrieves all activities' do
       tags 'Activities'
       produces 'application/json', 'application/xml'
+      security [Bearer: {}]
 
       response '200', 'activities found' do
         run_test!
       end
     end
 
-    post 'Creates a activity' do
+    post 'Creates an activity' do
       tags 'Activities'
       consumes 'application/json'
+      security [Bearer: {}]
       parameter name: :activity, in: :body, schema: {
         type: :object,
         properties: {
