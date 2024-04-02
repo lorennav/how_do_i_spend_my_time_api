@@ -30,25 +30,30 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                description:
-                  type: string
-                date:
-                  type: string
-                start_time:
-                  type: string
-                finish_time:
-                  type: string
-                category:
-                  type: object
-              required:
-              - name
-              - date
-              - start_time
-              - finish_time
+              "$ref": "#/components/schemas/activity"
+  "/api/v1/activities/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    put:
+      summary: Updates an activity
+      tags:
+      - Activities
+      security:
+      - Bearer: {}
+      parameters: []
+      responses:
+        '200':
+          description: activity updated
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/activity"
 servers:
 - url: http://{defaultHost}
   variables:
