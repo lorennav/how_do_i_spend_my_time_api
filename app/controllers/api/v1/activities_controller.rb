@@ -12,7 +12,7 @@ class Api::V1::ActivitiesController < ApplicationController
   end
 
   def create
-    activity = current_user.activities.build(activity_params)
+    activity = build_activity
     return api_response(activity, :created) if activity.save
 
     api_response(activity.errors, :unprocessable_entity)
