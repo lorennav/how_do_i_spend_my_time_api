@@ -26,4 +26,4 @@ Development
 
 ```rails s```
 
-* To access the openapi documentation, go to http://localhost:3001/api-docs/index.html
+* To access the openapi documentation, go to http://localhost:3000/api-docs/index.html
