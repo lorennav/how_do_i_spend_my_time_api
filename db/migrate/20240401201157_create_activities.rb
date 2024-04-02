@@ -4,10 +4,10 @@ class CreateActivities < ActiveRecord::Migration[7.1]
       t.string :name
       t.string :description
       t.date :date
-      t.time :start_time
-      t.time :finish_time
-      t.string :category
-
+      t.datetime :start_time
+      t.datetime :finish_time
+      t.references :user, null: false, foreign_key: true
+      t.references :category, null: true, foreign_key: true
       t.timestamps
     end
   end

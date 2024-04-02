@@ -8,7 +8,7 @@ class Api::V1::CategoriesController < ApplicationController
   end
 
   def create
-    category = Category.new(activity_params)
+    category = current_user.categories.build(category_params)
     return api_response(category, :created) if category.save
 
     api_response(category.errors, :unprocessable_entity)
@@ -16,7 +16,7 @@ class Api::V1::CategoriesController < ApplicationController
 
   private
 
-  def activity_params
+  def category_params
     params.require(:category).permit(:name)
   end
 end

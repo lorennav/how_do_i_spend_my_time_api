@@ -9,13 +9,17 @@ paths:
       summary: Retrieves all activities
       tags:
       - Activities
+      security:
+      - Bearer: {}
       responses:
         '200':
           description: activities found
     post:
-      summary: Creates a activity
+      summary: Creates an activity
       tags:
       - Activities
+      security:
+      - Bearer: {}
       parameters: []
       responses:
         '201':
@@ -46,11 +50,17 @@ paths:
               - start_time
               - finish_time
 servers:
-- url: https://{defaultHost}
+- url: http://{defaultHost}
   variables:
     defaultHost:
-      default: www.example.com
+      default: localhost:3000
 components:
+  securitySchemes:
+    Bearer:
+      description: Bearer Token
+      type: apiKey
+      name: Authorization
+      in: header
   schemas:
     activity:
       type: object
